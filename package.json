@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env VITE_SHOW_ADS=1 vite",
     "dev:clean": "vite --port 5181",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && cross-env VITE_SHOW_ADS=1 vite build",
     "preview": "vite preview"
   },
   "dependencies": {
