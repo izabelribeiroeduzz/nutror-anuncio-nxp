@@ -53,49 +53,51 @@ export default function MeusCursos() {
           </div>
         )}
 
-        {/* Linha 1: título + Exibir por */}
+        {/* Header único: título + Ver Todos (esq) + Exibir por + Filtrar por (dir) */}
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: 24,
-          }}
-        >
-          <h1
-            style={{
-              margin: 0,
-              fontSize: 28,
-              fontWeight: 800,
-              letterSpacing: '-0.5px',
-              color: colors.textPrimary,
-            }}
-          >
-            Meus Cursos
-          </h1>
-          <SelectField placeholder="Exibir por" />
-        </div>
-
-        {/* Linha 2: Ver Todos + Filtrar por */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            gap: 16,
             marginBottom: 32,
+            flexWrap: 'wrap',
           }}
         >
-          <h3
+          <div
             style={{
-              margin: 0,
-              fontSize: 16,
-              fontWeight: 700,
-              color: colors.textPrimary,
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: 20,
+              flexWrap: 'wrap',
             }}
           >
-            Ver Todos
-          </h3>
-          <SelectField placeholder="Filtrar por" />
+            <h1
+              style={{
+                margin: 0,
+                fontSize: 28,
+                fontWeight: 800,
+                letterSpacing: '-0.5px',
+                color: colors.textPrimary,
+              }}
+            >
+              Meus Cursos
+            </h1>
+            <h3
+              style={{
+                margin: 0,
+                fontSize: 16,
+                fontWeight: 700,
+                color: colors.textSecondary,
+              }}
+            >
+              Ver Todos
+            </h3>
+          </div>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <SelectField placeholder="Exibir por" />
+            <SelectField placeholder="Filtrar por" />
+          </div>
         </div>
 
         {/* Grid */}
