@@ -6,11 +6,8 @@ import AppLayout from '../components/AppLayout';
 import AulaThumb, { AulaThumbMini } from '../components/AulaThumb';
 import DesignBadge from '../components/DesignBadge';
 import { OfferCompact } from '../components/AdSlot';
-import {
-  OfferUGCTestimonial,
-  OfferIntentSearch,
-} from '../components/AdSlotV2';
-import { offerImg, offerVideo } from '../data/offerImages';
+import { OfferIntentSearch } from '../components/AdSlotV2';
+import { offerImg } from '../data/offerImages';
 import { SHOW_ADS } from '../config';
 import { cursoUx } from '../data/curso';
 import { colors } from '../theme';
@@ -384,19 +381,6 @@ export default function CursoDetail() {
               description="4 sessões para discutir seu projeto em profundidade."
               cta="Ver detalhes"
               thumbImage={offerImg.mentoria}
-            />
-          )}
-          {/* V2 — UGC: vídeo vertical de ex-aluno */}
-          {SHOW_ADS && (
-            <OfferUGCTestimonial
-              tag="Aluno"
-              studentName="Rafael A."
-              studentRole="Design Lead @ iFood"
-              result="Virou Lead em 1 ano"
-              quote="Achei que pesquisa era só para júnior. Os frameworks daqui mudaram como eu priorizo."
-              cta="Ver a trilha"
-              videoSrc={offerVideo.ugcDepoimento1}
-              posterImage={offerImg.ugc2}
             />
           )}
         </aside>
