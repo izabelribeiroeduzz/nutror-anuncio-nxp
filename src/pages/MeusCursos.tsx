@@ -2,12 +2,9 @@ import { Row, Col, Select } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import AppLayout from '../components/AppLayout';
 import CourseCard from '../components/CourseCard';
-import {
-  OfferVideoTrailer,
-  OfferDynamicRetarget,
-} from '../components/AdSlotV2';
+import { OfferDynamicRetarget } from '../components/AdSlotV2';
 import { SHOW_ADS } from '../config';
-import { offerImg, offerVideo } from '../data/offerImages';
+import { offerImg } from '../data/offerImages';
 import { colors } from '../theme';
 
 function SelectField({ placeholder }: { placeholder: string }) {
@@ -36,21 +33,6 @@ export default function MeusCursos() {
           paddingBottom: 'calc(var(--section-y) * 1.5)',
         }}
       >
-        {/* V1 — Hero Trailer (MasterClass-style) no topo */}
-        {SHOW_ADS && (
-          <div style={{ marginBottom: 40 }}>
-            <OfferVideoTrailer
-              tag="Trailer · 30s"
-              title="Pesquisa Avançada em UX — estreia em maio"
-              description="Veja um trecho real da produção. Prévia gratuita para quem já está na trilha."
-              cta="Entrar na lista de espera"
-              videoSrc={offerVideo.trailerCurso}
-              posterImage={offerImg.trailerPoster}
-              height={280}
-            />
-          </div>
-        )}
-
         {/* Header único: título + Ver Todos (esq) + Exibir por + Filtrar por (dir) */}
         <div
           style={{

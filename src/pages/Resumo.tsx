@@ -1,7 +1,7 @@
 import { Button, Row, Col, Carousel } from 'antd';
 import AppLayout from '../components/AppLayout';
 import CourseCard from '../components/CourseCard';
-import { OfferInline, OfferCard } from '../components/AdSlot';
+import { OfferCard } from '../components/AdSlot';
 import { OfferCarouselRow } from '../components/AdSlotV2';
 import { SHOW_ADS } from '../config';
 import { offerImg } from '../data/offerImages';
@@ -206,17 +206,9 @@ export default function Resumo() {
         </Row>
       </section>
 
-      {/* S1 — Oferta inline do produtor com thumb 1:1 */}
+      {/* V5 — Carrossel de pílulas do próximo curso (substitui a antiga OfferInline) */}
       {SHOW_ADS && (
         <section className="container section-y-lg">
-          <OfferInline
-            tag="Oferta"
-            title="Participe do Workshop ao vivo: Pesquisa com usuários reais — 28/abr"
-            cta="Inscrever-se"
-            thumbImage={offerImg.workshopPesquisa}
-          />
-
-          {/* V5 — Carrossel de pílulas do próximo curso, logo abaixo da oferta */}
           <OfferCarouselRow
             tag="Próximos passos"
             title="Pílulas do próximo curso — Pesquisa Avançada em UX"
