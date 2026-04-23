@@ -1,4 +1,6 @@
-import { Progress } from 'antd';
+import { useState } from 'react';
+import { Button, Progress } from 'antd';
+import { CaretRightFilled } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import DesignBadge from './DesignBadge';
 import { colors } from '../theme';
@@ -16,11 +18,15 @@ type Props = { course: Course; compact?: boolean };
 
 export default function CourseCard({ course, compact }: Props) {
   const navigate = useNavigate();
+  const [hover, setHover] = useState(false);
   const hasProgress = typeof course.progress === 'number';
+  const showProgress = hasProgress && hover;
 
   return (
     <div
       className="course-card"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       onClick={() => navigate(`/curso/${course.id}`)}
       style={{ width: '100%' }}
     >
@@ -57,10 +63,47 @@ export default function CourseCard({ course, compact }: Props) {
             <path d="M3 17l5-5 4 4 3-3 6 6" />
           </svg>
         )}
+
+        {/* Overlay Continuar — só no hover, só se tem progresso */}
+        {hasProgress && (
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'rgba(11,11,13,0.55)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: hover ? 1 : 0,
+              transition: 'opacity 0.18s ease',
+              pointerEvents: hover ? 'auto' : 'none',
+              zIndex: 2,
+            }}
+          >
+            <Button
+              type="primary"
+              icon={<CaretRightFilled />}
+              iconPosition="end"
+              style={{ fontWeight: 600, color: '#0B0B0D' }}
+            >
+              Continuar
+            </Button>
+          </div>
+        )}
       </div>
 
+      {/* Barra de progresso — só no hover */}
       {hasProgress && (
-        <div style={{ marginTop: 12 }}>
+        <div
+          style={{
+            maxHeight: showProgress ? 48 : 0,
+            opacity: showProgress ? 1 : 0,
+            overflow: 'hidden',
+            transition:
+              'max-height 0.22s ease, opacity 0.22s ease, margin-top 0.22s ease',
+            marginTop: showProgress ? 12 : 0,
+          }}
+        >
           <Progress
             percent={course.progress}
             showInfo={false}
