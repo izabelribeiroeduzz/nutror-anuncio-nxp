@@ -185,8 +185,8 @@ export default function CursoDetail() {
       <section className="curso-banner" style={{ paddingBottom: 64 }}>
         <div className="big-title-bg">Designers</div>
 
-        <div className="container curso-banner-grid">
-          <div style={{ flex: 1, minWidth: 0, maxWidth: 720 }}>
+        <div className="container">
+          <div style={{ maxWidth: 720 }}>
             <h1
               style={{
                 margin: 0,
@@ -248,73 +248,18 @@ export default function CursoDetail() {
               </div>
             </div>
           </div>
-
-          {/* Side: Design card — flat, alinhado com o bloco de conteúdo abaixo */}
-          <div
-            className="curso-side"
-            style={{
-              flex: '0 0 var(--sidebar-w)',
-              marginTop: 40,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 14,
-              }}
-            >
-              <DesignBadge size={56} showLabel={false} />
-              <div>
-                <div
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 700,
-                    color: '#fff',
-                    lineHeight: 1.2,
-                  }}
-                >
-                  Design
-                </div>
-                <div style={{ fontSize: 13, color: colors.textSecondary, marginTop: 2 }}>
-                  {curso.author}
-                </div>
-              </div>
-            </div>
-
-            {/* S3 — Oferta compacta do produtor na sidebar */}
-            {SHOW_ADS && (
-              <OfferCompact
-                tag="Mentoria"
-                title="Mentoria 1:1 com Designers da Eduzz"
-                description="4 sessões para discutir seu projeto em profundidade."
-                cta="Ver detalhes"
-                thumbImage={offerImg.mentoria}
-              />
-            )}
-            {/* V2 — UGC: vídeo vertical de ex-aluno */}
-            {SHOW_ADS && (
-              <OfferUGCTestimonial
-                tag="Aluno"
-                studentName="Rafael A."
-                studentRole="Design Lead @ iFood"
-                result="Virou Lead em 1 ano"
-                quote="Achei que pesquisa era só para júnior. Os frameworks daqui mudaram como eu priorizo."
-                cta="Ver a trilha"
-                videoSrc={offerVideo.ugcDepoimento1}
-                posterImage={offerImg.ugc2}
-              />
-            )}
-          </div>
         </div>
       </section>
 
-      {/* Tabs + lista módulos */}
-      <section className="container" style={{ paddingBottom: 'calc(var(--section-y) * 1.5)' }}>
-        <div style={{ maxWidth: 'var(--reading-max)' }}>
+      {/* Tabs + lista módulos + sidebar alinhada */}
+      <section
+        className="container aula-layout"
+        style={{
+          paddingTop: 0,
+          paddingBottom: 'calc(var(--section-y) * 1.5)',
+        }}
+      >
+        <div style={{ flex: 1, minWidth: 0, maxWidth: 'var(--reading-max)' }}>
         <Tabs
           defaultActiveKey="modulos"
           items={[
@@ -382,6 +327,59 @@ export default function CursoDetail() {
         />
 
         </div>
+
+        {/* Sidebar: Design + Mentoria + UGC, alinhada com a caixa de módulos */}
+        <aside
+          style={{
+            flex: '0 0 var(--sidebar-w)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 16,
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <DesignBadge size={56} showLabel={false} />
+            <div>
+              <div
+                style={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  color: '#fff',
+                  lineHeight: 1.2,
+                }}
+              >
+                Design
+              </div>
+              <div style={{ fontSize: 13, color: colors.textSecondary, marginTop: 2 }}>
+                {curso.author}
+              </div>
+            </div>
+          </div>
+
+          {/* S3 — Oferta compacta do produtor na sidebar */}
+          {SHOW_ADS && (
+            <OfferCompact
+              tag="Mentoria"
+              title="Mentoria 1:1 com Designers da Eduzz"
+              description="4 sessões para discutir seu projeto em profundidade."
+              cta="Ver detalhes"
+              thumbImage={offerImg.mentoria}
+            />
+          )}
+          {/* V2 — UGC: vídeo vertical de ex-aluno */}
+          {SHOW_ADS && (
+            <OfferUGCTestimonial
+              tag="Aluno"
+              studentName="Rafael A."
+              studentRole="Design Lead @ iFood"
+              result="Virou Lead em 1 ano"
+              quote="Achei que pesquisa era só para júnior. Os frameworks daqui mudaram como eu priorizo."
+              cta="Ver a trilha"
+              videoSrc={offerVideo.ugcDepoimento1}
+              posterImage={offerImg.ugc2}
+            />
+          )}
+        </aside>
       </section>
       {/* mantém params referenciado p/ evitar warning TS */}
       <span style={{ display: 'none' }}>{params.id}</span>
