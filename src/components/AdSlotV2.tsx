@@ -11,7 +11,7 @@
  * Todos opt-in via SHOW_ADS. Copy, thumbs e CTAs vêm do produtor.
  */
 import { useEffect, useRef, useState } from 'react';
-import { CaretRightOutlined, CaretRightFilled, LeftOutlined, RightOutlined, SoundOutlined, SearchOutlined } from '@ant-design/icons';
+import { CaretRightOutlined, CaretRightFilled, LeftOutlined, RightOutlined, CloseOutlined, SearchOutlined } from '@ant-design/icons';
 import { SHOW_ADS } from '../config';
 import { colors } from '../theme';
 import type { OfferTag } from './AdSlot';
@@ -61,9 +61,9 @@ export function OfferVideoTrailer({
   height?: number;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
+  const [dismissed, setDismissed] = useState(false);
 
-  if (!SHOW_ADS) return null;
+  if (!SHOW_ADS || dismissed) return null;
 
   return (
     <div
@@ -83,7 +83,7 @@ export function OfferVideoTrailer({
         poster={posterImage}
         autoPlay
         loop
-        muted={muted}
+        muted
         playsInline
         style={{
           width: '100%',
@@ -102,13 +102,10 @@ export function OfferVideoTrailer({
           pointerEvents: 'none',
         }}
       />
-      {/* Mute/unmute */}
+      {/* Close */}
       <button
-        onClick={() => {
-          setMuted((m) => !m);
-          if (videoRef.current) videoRef.current.muted = !muted;
-        }}
-        aria-label={muted ? 'Ativar som' : 'Desativar som'}
+        onClick={() => setDismissed(true)}
+        aria-label="Fechar"
         style={{
           position: 'absolute',
           top: 14,
@@ -127,7 +124,7 @@ export function OfferVideoTrailer({
           padding: 0,
         }}
       >
-        <SoundOutlined style={{ fontSize: 14, opacity: muted ? 0.5 : 1 }} />
+        <CloseOutlined style={{ fontSize: 14 }} />
       </button>
       {/* Bottom content */}
       <div
