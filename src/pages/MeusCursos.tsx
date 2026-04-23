@@ -5,7 +5,6 @@ import CourseCard from '../components/CourseCard';
 import {
   OfferVideoTrailer,
   OfferDynamicRetarget,
-  OfferCarouselRow,
 } from '../components/AdSlotV2';
 import { SHOW_ADS } from '../config';
 import { offerImg, offerVideo } from '../data/offerImages';
@@ -138,59 +137,6 @@ export default function MeusCursos() {
             />
           </Col>
         </Row>
-
-        {/* V5 — Carrossel interativo de pílulas/aulas do próximo curso */}
-        {SHOW_ADS && (
-          <OfferCarouselRow
-            tag="Próximos passos"
-            title="Pílulas do próximo curso — Pesquisa Avançada em UX"
-            subtitle="Arraste para ver todos os módulos · cada pílula é uma aula completa gratuita"
-            items={[
-              {
-                id: 'p1',
-                title: 'Entrevista em profundidade',
-                subtitle: 'Aula bônus · liberada',
-                duration: '14 min',
-                thumbImage: offerImg.lessonEntrevista,
-              },
-              {
-                id: 'p2',
-                title: 'Análise temática de respostas',
-                subtitle: 'Módulo 2',
-                duration: '22 min',
-                thumbImage: offerImg.lessonAnalise,
-              },
-              {
-                id: 'p3',
-                title: 'Figma para prototipagem',
-                subtitle: 'Módulo 3',
-                duration: '18 min',
-                thumbImage: offerImg.lessonFigma,
-              },
-              {
-                id: 'p4',
-                title: 'Montando seu portfólio de UX',
-                subtitle: 'Módulo 4',
-                duration: '26 min',
-                thumbImage: offerImg.lessonPortfolio,
-              },
-              {
-                id: 'p5',
-                title: 'Workshop: pesquisa quantitativa',
-                subtitle: 'Bônus',
-                duration: '38 min',
-                thumbImage: offerImg.workshopPesquisa,
-              },
-              {
-                id: 'p6',
-                title: 'Mentoria 1:1 com a produtora',
-                subtitle: 'Upgrade',
-                duration: '4 sessões',
-                thumbImage: offerImg.mentoria,
-              },
-            ]}
-          />
-        )}
       </div>
     </AppLayout>
   );

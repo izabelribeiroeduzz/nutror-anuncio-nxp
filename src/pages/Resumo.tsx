@@ -2,6 +2,7 @@ import { Button, Row, Col, Carousel } from 'antd';
 import AppLayout from '../components/AppLayout';
 import CourseCard from '../components/CourseCard';
 import { OfferInline, OfferCard } from '../components/AdSlot';
+import { OfferCarouselRow } from '../components/AdSlotV2';
 import { SHOW_ADS } from '../config';
 import { offerImg } from '../data/offerImages';
 import { colors } from '../theme';
@@ -213,6 +214,57 @@ export default function Resumo() {
             title="Participe do Workshop ao vivo: Pesquisa com usuários reais — 28/abr"
             cta="Inscrever-se"
             thumbImage={offerImg.workshopPesquisa}
+          />
+
+          {/* V5 — Carrossel de pílulas do próximo curso, logo abaixo da oferta */}
+          <OfferCarouselRow
+            tag="Próximos passos"
+            title="Pílulas do próximo curso — Pesquisa Avançada em UX"
+            subtitle="Arraste para ver todos os módulos · cada pílula é uma aula completa gratuita"
+            items={[
+              {
+                id: 'p1',
+                title: 'Entrevista em profundidade',
+                subtitle: 'Aula bônus · liberada',
+                duration: '14 min',
+                thumbImage: offerImg.lessonEntrevista,
+              },
+              {
+                id: 'p2',
+                title: 'Análise temática de respostas',
+                subtitle: 'Módulo 2',
+                duration: '22 min',
+                thumbImage: offerImg.lessonAnalise,
+              },
+              {
+                id: 'p3',
+                title: 'Figma para prototipagem',
+                subtitle: 'Módulo 3',
+                duration: '18 min',
+                thumbImage: offerImg.lessonFigma,
+              },
+              {
+                id: 'p4',
+                title: 'Montando seu portfólio de UX',
+                subtitle: 'Módulo 4',
+                duration: '26 min',
+                thumbImage: offerImg.lessonPortfolio,
+              },
+              {
+                id: 'p5',
+                title: 'Workshop: pesquisa quantitativa',
+                subtitle: 'Bônus',
+                duration: '38 min',
+                thumbImage: offerImg.workshopPesquisa,
+              },
+              {
+                id: 'p6',
+                title: 'Mentoria 1:1 com a produtora',
+                subtitle: 'Upgrade',
+                duration: '4 sessões',
+                thumbImage: offerImg.mentoria,
+              },
+            ]}
           />
         </section>
       )}
