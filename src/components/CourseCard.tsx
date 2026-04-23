@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { Button, Dropdown, Progress } from 'antd';
-import { CaretRightFilled, MoreOutlined } from '@ant-design/icons';
+import { Progress } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import DesignBadge from './DesignBadge';
 import { colors } from '../theme';
@@ -17,16 +15,12 @@ export type Course = {
 type Props = { course: Course; compact?: boolean };
 
 export default function CourseCard({ course, compact }: Props) {
-  const [hover, setHover] = useState(false);
   const navigate = useNavigate();
-
   const hasProgress = typeof course.progress === 'number';
 
   return (
     <div
       className="course-card"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
       onClick={() => navigate(`/curso/${course.id}`)}
       style={{ width: '100%' }}
     >
@@ -62,45 +56,6 @@ export default function CourseCard({ course, compact }: Props) {
             <circle cx="9" cy="10" r="1.5" />
             <path d="M3 17l5-5 4 4 3-3 6 6" />
           </svg>
-        )}
-
-        {/* Hover overlay: Continuar + ... */}
-        {hasProgress && (
-          <div
-            className="hover-actions"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'rgba(11,11,13,0.55)',
-              display: 'flex',
-              alignItems: 'flex-end',
-              padding: 16,
-              gap: 8,
-            }}
-          >
-            <Button
-              type="primary"
-              icon={<CaretRightFilled />}
-              iconPosition="end"
-              style={{ fontWeight: 600, color: '#0B0B0D' }}
-            >
-              Continuar
-            </Button>
-            <Dropdown
-              menu={{ items: [{ key: 'r', label: 'Remover da lista' }] }}
-              trigger={['click']}
-            >
-              <Button
-                icon={<MoreOutlined />}
-                style={{
-                  background: colors.bgElevated,
-                  border: `1px solid ${colors.border}`,
-                  color: '#fff',
-                }}
-                onClick={(e) => e.stopPropagation()}
-              />
-            </Dropdown>
-          </div>
         )}
       </div>
 

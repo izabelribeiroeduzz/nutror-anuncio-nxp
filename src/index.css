@@ -177,16 +177,6 @@ a {
 .course-card:hover {
   transform: translateY(-2px);
 }
-.course-card .hover-actions {
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  pointer-events: none;
-}
-.course-card:hover .hover-actions,
-.course-card.is-hover .hover-actions {
-  opacity: 1;
-  pointer-events: auto;
-}
 
 /* Hero banner background */
 .hero-banner {

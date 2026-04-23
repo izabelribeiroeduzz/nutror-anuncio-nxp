@@ -259,7 +259,17 @@ export default function CursoDetail() {
           paddingBottom: 'calc(var(--section-y) * 1.5)',
         }}
       >
-        <div style={{ flex: 1, minWidth: 0, maxWidth: 'var(--reading-max)' }}>
+        <div
+          style={{
+            flex: 1,
+            minWidth: 0,
+            maxWidth: 'var(--reading-max)',
+            background: colors.bgSurface,
+            border: `1px solid ${colors.border}`,
+            borderRadius: 12,
+            padding: '20px 28px 28px',
+          }}
+        >
         <Tabs
           defaultActiveKey="modulos"
           items={[
@@ -337,22 +347,32 @@ export default function CursoDetail() {
             gap: 16,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <DesignBadge size={56} showLabel={false} />
-            <div>
-              <div
-                style={{
-                  fontSize: 16,
-                  fontWeight: 700,
-                  color: '#fff',
-                  lineHeight: 1.2,
-                }}
-              >
-                Design
-              </div>
-              <div style={{ fontSize: 13, color: colors.textSecondary, marginTop: 2 }}>
-                {curso.author}
-              </div>
+          {/* Design card — caixa combinando com a caixa de módulos */}
+          <div
+            style={{
+              background: colors.bgSurface,
+              border: `1px solid ${colors.border}`,
+              borderRadius: 12,
+              padding: 28,
+              textAlign: 'center',
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <DesignBadge size={72} showLabel={false} />
+            </div>
+            <div
+              style={{
+                marginTop: 16,
+                fontSize: 18,
+                fontWeight: 700,
+                color: '#fff',
+                lineHeight: 1.2,
+              }}
+            >
+              Design
+            </div>
+            <div style={{ fontSize: 13, color: colors.textSecondary, marginTop: 4 }}>
+              {curso.author}
             </div>
           </div>
 
