@@ -688,8 +688,10 @@ export type CarouselItem = {
   thumbImage?: string;
   duration?: string;
   href?: string;
-  /** true = item leva ao marketplace Nutror (mostra badge + abre em nova aba) */
+  /** true = item leva ao marketplace Nutror (abre em nova aba) */
   external?: boolean;
+  /** foto do dono/produtor do curso (circular, ~20px). Mostra ao lado do subtitle. */
+  ownerAvatar?: string;
 };
 
 export function OfferCarouselRow({
@@ -891,8 +893,40 @@ export function OfferCarouselRow({
                 {item.title}
               </div>
               {item.subtitle && (
-                <div style={{ color: colors.textSecondary, fontSize: 11, marginTop: 3 }}>
-                  {item.subtitle}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    marginTop: 8,
+                  }}
+                >
+                  {item.ownerAvatar && (
+                    <img
+                      src={item.ownerAvatar}
+                      alt=""
+                      loading="lazy"
+                      style={{
+                        width: 20,
+                        height: 20,
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                        flex: '0 0 20px',
+                      }}
+                    />
+                  )}
+                  <span
+                    style={{
+                      color: colors.textSecondary,
+                      fontSize: 12,
+                      fontWeight: 500,
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {item.subtitle}
+                  </span>
                 </div>
               )}
             </div>
