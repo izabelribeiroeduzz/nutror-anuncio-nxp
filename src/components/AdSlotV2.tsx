@@ -11,7 +11,7 @@
  * Todos opt-in via SHOW_ADS. Copy, thumbs e CTAs vêm do produtor.
  */
 import { useEffect, useRef, useState } from 'react';
-import { CaretRightOutlined, CaretRightFilled, LeftOutlined, RightOutlined, CloseOutlined, SearchOutlined, StarFilled, ExportOutlined } from '@ant-design/icons';
+import { CaretRightOutlined, CaretRightFilled, LeftOutlined, RightOutlined, CloseOutlined, SearchOutlined, StarFilled } from '@ant-design/icons';
 import { SHOW_ADS } from '../config';
 import { colors } from '../theme';
 import type { OfferTag } from './AdSlot';
@@ -855,29 +855,6 @@ export function OfferCarouselRow({
                 position: 'relative',
               }}
             >
-              {item.external && (
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: 8,
-                    left: 8,
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 4,
-                    fontSize: 9,
-                    fontWeight: 700,
-                    letterSpacing: '0.6px',
-                    textTransform: 'uppercase',
-                    color: '#fff',
-                    background: 'rgba(11,11,13,0.78)',
-                    backdropFilter: 'blur(6px)',
-                    padding: '3px 7px',
-                    borderRadius: 3,
-                  }}
-                >
-                  <ExportOutlined style={{ fontSize: 9 }} /> Marketplace
-                </span>
-              )}
               {item.duration && (
                 <span
                   style={{

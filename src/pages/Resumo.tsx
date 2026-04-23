@@ -211,7 +211,7 @@ export default function Resumo() {
         <section className="container section-y-lg">
           <OfferCarouselRow
             tag="Recomendados para você"
-            title="Porque você está em UX Designers"
+            title="Porque você está no curso UX Designers"
             items={[
               {
                 id: 'm1',
