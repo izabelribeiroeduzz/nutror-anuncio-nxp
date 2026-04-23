@@ -5,9 +5,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AppLayout from '../components/AppLayout';
 import AulaThumb, { AulaThumbMini } from '../components/AulaThumb';
 import DesignBadge from '../components/DesignBadge';
-import { OfferCompact, OfferModuleBonus } from '../components/AdSlot';
+import { OfferCompact } from '../components/AdSlot';
 import {
-  OfferCarouselRow,
   OfferUGCTestimonial,
   OfferIntentSearch,
 } from '../components/AdSlotV2';
@@ -250,116 +249,68 @@ export default function CursoDetail() {
             </div>
           </div>
 
-          {/* Side: Design card */}
+          {/* Side: Design card — flat, alinhado com o bloco de conteúdo abaixo */}
           <div
             className="curso-side"
             style={{
               flex: '0 0 var(--sidebar-w)',
-              background: colors.bgSurface,
-              border: `1px solid ${colors.border}`,
-              borderRadius: 12,
-              padding: 32,
-              textAlign: 'center',
               marginTop: 40,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 16,
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <DesignBadge size={72} showLabel={false} />
-            </div>
             <div
               style={{
-                marginTop: 16,
-                fontSize: 18,
-                fontWeight: 700,
-                color: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 14,
               }}
             >
-              Design
-            </div>
-            <div style={{ fontSize: 13, color: colors.textSecondary, marginTop: 4 }}>
-              {curso.author}
+              <DesignBadge size={56} showLabel={false} />
+              <div>
+                <div
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 700,
+                    color: '#fff',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Design
+                </div>
+                <div style={{ fontSize: 13, color: colors.textSecondary, marginTop: 2 }}>
+                  {curso.author}
+                </div>
+              </div>
             </div>
 
             {/* S3 — Oferta compacta do produtor na sidebar */}
             {SHOW_ADS && (
-              <div style={{ marginTop: 16 }}>
-                <OfferCompact
-                  tag="Mentoria"
-                  title="Mentoria 1:1 com Designers da Eduzz"
-                  description="4 sessões para discutir seu projeto em profundidade."
-                  cta="Ver detalhes"
-                  thumbImage={offerImg.mentoria}
-                />
-              </div>
+              <OfferCompact
+                tag="Mentoria"
+                title="Mentoria 1:1 com Designers da Eduzz"
+                description="4 sessões para discutir seu projeto em profundidade."
+                cta="Ver detalhes"
+                thumbImage={offerImg.mentoria}
+              />
             )}
             {/* V2 — UGC: vídeo vertical de ex-aluno */}
             {SHOW_ADS && (
-              <div style={{ marginTop: 12, textAlign: 'left' }}>
-                <OfferUGCTestimonial
-                  tag="Aluno"
-                  studentName="Rafael A."
-                  studentRole="Design Lead @ iFood"
-                  result="Virou Lead em 1 ano"
-                  quote="Achei que pesquisa era só para júnior. Os frameworks daqui mudaram como eu priorizo."
-                  cta="Ver a trilha"
-                  videoSrc={offerVideo.ugcDepoimento1}
-                  posterImage={offerImg.ugc2}
-                />
-              </div>
+              <OfferUGCTestimonial
+                tag="Aluno"
+                studentName="Rafael A."
+                studentRole="Design Lead @ iFood"
+                result="Virou Lead em 1 ano"
+                quote="Achei que pesquisa era só para júnior. Os frameworks daqui mudaram como eu priorizo."
+                cta="Ver a trilha"
+                videoSrc={offerVideo.ugcDepoimento1}
+                posterImage={offerImg.ugc2}
+              />
             )}
           </div>
         </div>
       </section>
-
-      {/* V5 — Carrossel interativo entre banner e lista de módulos */}
-      {SHOW_ADS && (
-        <section className="container">
-          <div style={{ maxWidth: 'var(--reading-max)' }}>
-            <OfferCarouselRow
-              tag="Pílulas da trilha"
-              title="Assista antes de seguir no curso"
-              subtitle="Aulas gratuitas relacionadas, com a mesma produtora"
-              items={[
-                {
-                  id: 'c1',
-                  title: 'Entrevista em profundidade',
-                  subtitle: 'Pesquisa UX · liberada',
-                  duration: '14 min',
-                  thumbImage: offerImg.lessonEntrevista,
-                },
-                {
-                  id: 'c2',
-                  title: 'Análise temática de respostas',
-                  subtitle: 'Pesquisa UX',
-                  duration: '22 min',
-                  thumbImage: offerImg.lessonAnalise,
-                },
-                {
-                  id: 'c3',
-                  title: 'Figma para prototipagem',
-                  subtitle: 'Bônus',
-                  duration: '18 min',
-                  thumbImage: offerImg.lessonFigma,
-                },
-                {
-                  id: 'c4',
-                  title: 'Montando seu portfólio de UX',
-                  subtitle: 'Bônus',
-                  duration: '26 min',
-                  thumbImage: offerImg.lessonPortfolio,
-                },
-                {
-                  id: 'c5',
-                  title: 'Workshop quantitativa',
-                  subtitle: 'Bônus',
-                  duration: '38 min',
-                  thumbImage: offerImg.workshopPesquisa,
-                },
-              ]}
-            />
-          </div>
-        </section>
-      )}
 
       {/* Tabs + lista módulos */}
       <section className="container" style={{ paddingBottom: 'calc(var(--section-y) * 1.5)' }}>
@@ -419,15 +370,6 @@ export default function CursoDetail() {
                             ))}
                           </div>
                         </ModuloItem>
-                        {/* S6 — Aula bônus do produtor entre módulos */}
-                        {idx === 0 && (
-                          <OfferModuleBonus
-                            title="Aula bônus: Figma para Product Designers"
-                            description="Preview grátis do próximo curso. 12 min."
-                            cta="Assistir agora"
-                            thumbImage={offerImg.figmaBonus}
-                          />
-                        )}
                       </Fragment>
                     ))}
                   </div>
@@ -439,18 +381,6 @@ export default function CursoDetail() {
           ]}
         />
 
-        {/* S4 — Oferta compacta após os módulos */}
-        {SHOW_ADS && (
-          <div style={{ marginTop: 32, maxWidth: 540 }}>
-            <OfferCompact
-              tag="Continue aprendendo"
-              title="Quando terminar: Pesquisa Avançada em UX"
-              description="Próximo curso na trilha, com a mesma produtora."
-              cta="Ativar lembrete"
-              thumbImage={offerImg.cursoUxAvancado}
-            />
-          </div>
-        )}
         </div>
       </section>
       {/* mantém params referenciado p/ evitar warning TS */}
