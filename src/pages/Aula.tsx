@@ -258,17 +258,6 @@ export default function Aula() {
                       </div>
                     </div>
 
-                    {/* S5 — Material extra do produtor, card separado abaixo da descrição */}
-                    {SHOW_ADS && (
-                      <div style={{ marginTop: 16 }}>
-                        <OfferCompact
-                          tag="Material extra"
-                          title="Baixe o roteiro usado neste teste de usabilidade"
-                          description="Template completo com perguntas, tarefas e critérios."
-                          cta="Baixar PDF"
-                        />
-                      </div>
-                    )}
                   </div>
                 ),
               },

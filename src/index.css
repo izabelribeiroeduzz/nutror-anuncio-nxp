@@ -109,16 +109,16 @@ a {
   background: #3a3a3e;
 }
 
-/* Utility: link underline used em "Ver todos", "Ver curso" */
+/* Utility: link underline used em "Ver todos", "Ver curso" — usa primary */
 .link-underline {
-  color: #7fa8ff;
+  color: #f5b800;
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 500;
   cursor: pointer;
 }
 .link-underline:hover {
-  color: #a9c3ff;
+  color: #ffc933;
 }
 
 /* Header menu customização */
