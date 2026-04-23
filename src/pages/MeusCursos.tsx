@@ -6,7 +6,6 @@ import {
   OfferVideoTrailer,
   OfferDynamicRetarget,
   OfferCarouselRow,
-  OfferUGCTestimonial,
 } from '../components/AdSlotV2';
 import { SHOW_ADS } from '../config';
 import { offerImg, offerVideo } from '../data/offerImages';
@@ -138,21 +137,6 @@ export default function MeusCursos() {
               }}
             />
           </Col>
-          {/* V2 — UGC: depoimento de ex-aluno */}
-          {SHOW_ADS && (
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <OfferUGCTestimonial
-                tag="Aluno"
-                studentName="Marina R."
-                studentRole="UX Designer @ Nubank"
-                result="De júnior a pleno em 6 meses"
-                quote="Eu não conhecia nada de pesquisa. Hoje conduzo entrevistas sozinha e subi de cargo."
-                cta="Ver trilha completa"
-                videoSrc={offerVideo.ugcDepoimento1}
-                posterImage={offerImg.ugc1}
-              />
-            </Col>
-          )}
         </Row>
 
         {/* V5 — Carrossel interativo de pílulas/aulas do próximo curso */}

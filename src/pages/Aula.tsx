@@ -14,13 +14,8 @@ import {
   OfferPlayerOverlay,
   OfferFileItem,
 } from '../components/AdSlot';
-import {
-  OfferVideoTrailer,
-  OfferIntentSearch,
-  OfferDynamicRetarget,
-  OfferUGCTestimonial,
-} from '../components/AdSlotV2';
-import { offerImg, offerVideo } from '../data/offerImages';
+import { OfferIntentSearch } from '../components/AdSlotV2';
+import { offerImg } from '../data/offerImages';
 import { SHOW_ADS } from '../config';
 import { cursoUx } from '../data/curso';
 import { colors } from '../theme';
@@ -139,21 +134,6 @@ export default function Aula() {
               cta="Conhecer mentoria"
             />
           </div>
-
-          {/* V1 — Trailer do próximo curso logo após o player */}
-          {SHOW_ADS && (
-            <div style={{ marginBottom: 24 }}>
-              <OfferVideoTrailer
-                tag="Trailer · próximo curso"
-                title="Pesquisa Avançada em UX — continue com a mesma produtora"
-                description="Trecho real da primeira aula. Assista sem compromisso."
-                cta="Entrar na lista"
-                videoSrc={offerVideo.trailerCurso}
-                posterImage={offerImg.trailerPoster}
-                height={220}
-              />
-            </div>
-          )}
 
           {/* Marcar como concluída / próxima aula */}
           <div
@@ -385,21 +365,6 @@ export default function Aula() {
             <OfferIntentSearch placeholder="Procurar aula (tente: figma, mentoria)" />
           </div>
 
-          {/* V3 — Retargeting dinâmico na sidebar */}
-          {SHOW_ADS && (
-            <div style={{ marginTop: 20 }}>
-              <OfferDynamicRetarget
-                lessonTitle="Análise dos resultados — Aula 5"
-                lessonModule="UX Designers · Pesquisa"
-                watchedSeconds={95}
-                totalSeconds={720}
-                cta="Retomar"
-                thumbImage={offerImg.lessonAnalise}
-              />
-            </div>
-          )}
-
-
           {/* Lista de módulos (sempre expandido aqui, com aulas) */}
           <div style={{ marginTop: 20 }}>
             {cursoUx.modulos.map((m) => (
@@ -453,34 +418,6 @@ export default function Aula() {
             ))}
           </div>
 
-          {/* S12 — Continue na trilha, abaixo do último módulo */}
-          {SHOW_ADS && (
-            <div style={{ marginTop: 24 }}>
-              <OfferCompact
-                tag="Continue aprendendo"
-                title="Próximo curso: Pesquisa Avançada em UX"
-                description="Continue a trilha com a mesma produtora."
-                cta="Entrar na lista"
-                thumbImage={offerImg.cursoUxAvancado}
-              />
-            </div>
-          )}
-
-          {/* V2 — UGC compacto abaixo da trilha */}
-          {SHOW_ADS && (
-            <div style={{ marginTop: 16 }}>
-              <OfferUGCTestimonial
-                tag="Aluno"
-                studentName="Júlia M."
-                studentRole="Product Designer @ Magalu"
-                result="Aprovada em 3 processos"
-                quote="Os frameworks de pesquisa me ajudaram a estruturar cases para o portfólio."
-                cta="Ver trilha"
-                videoSrc={offerVideo.ugcDepoimento1}
-                posterImage={offerImg.ugc1}
-              />
-            </div>
-          )}
         </aside>
       </div>
 
