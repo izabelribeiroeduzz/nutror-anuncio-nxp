@@ -11,7 +11,7 @@
  * Todos opt-in via SHOW_ADS. Copy, thumbs e CTAs vêm do produtor.
  */
 import { useEffect, useRef, useState } from 'react';
-import { CaretRightOutlined, CaretRightFilled, LeftOutlined, RightOutlined, CloseOutlined, SearchOutlined } from '@ant-design/icons';
+import { CaretRightOutlined, CaretRightFilled, LeftOutlined, RightOutlined, CloseOutlined, SearchOutlined, StarFilled } from '@ant-design/icons';
 import { SHOW_ADS } from '../config';
 import { colors } from '../theme';
 import type { OfferTag } from './AdSlot';
@@ -32,6 +32,37 @@ function Chip({ tag, solid = false }: { tag: string; solid?: boolean }) {
       }}
     >
       {tag}
+    </span>
+  );
+}
+
+/**
+ * Identidade "Recomendados para você" — curadoria editorial do produtor.
+ * Distinta das ofertas promocionais: azul (confiança) + pill + estrela.
+ * NÃO reutilizar em slots de oferta paga — esse chip é só p/ recomendação.
+ */
+const RECOMENDADO_BLUE = '#7FA8FF';
+
+function RecomendadoChip({ label = 'Recomendados para você' }: { label?: string }) {
+  return (
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 6,
+        fontSize: 10,
+        fontWeight: 700,
+        letterSpacing: '0.8px',
+        textTransform: 'uppercase',
+        color: RECOMENDADO_BLUE,
+        background: 'rgba(127, 168, 255, 0.12)',
+        padding: '4px 10px',
+        borderRadius: 999,
+        border: `1px solid rgba(127, 168, 255, 0.22)`,
+      }}
+    >
+      <StarFilled style={{ fontSize: 9 }} />
+      {label}
     </span>
   );
 }
@@ -660,7 +691,7 @@ export type CarouselItem = {
 };
 
 export function OfferCarouselRow({
-  tag = 'Próximos passos',
+  tag = 'Recomendados para você',
   title,
   subtitle,
   items,
@@ -697,11 +728,9 @@ export function OfferCarouselRow({
   return (
     <section
       style={{
-        background: 'rgba(245, 184, 0, 0.04)',
-        border: `1px solid rgba(245, 184, 0, 0.15)`,
-        borderRadius: 12,
-        padding: '20px 20px 8px',
-        margin: '32px 0',
+        padding: '24px 0 8px',
+        margin: '24px 0',
+        borderTop: `1px solid ${colors.border}`,
       }}
     >
       <div
@@ -710,17 +739,18 @@ export function OfferCarouselRow({
           alignItems: 'flex-end',
           justifyContent: 'space-between',
           marginBottom: 16,
+          gap: 16,
         }}
       >
         <div>
-          <Chip tag={tag} />
+          <RecomendadoChip label={tag} />
           <div
             style={{
               color: '#fff',
               fontSize: 18,
               fontWeight: 800,
               letterSpacing: '-0.3px',
-              marginTop: 8,
+              marginTop: 10,
             }}
           >
             {title}

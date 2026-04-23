@@ -210,7 +210,7 @@ export default function Resumo() {
       {SHOW_ADS && (
         <section className="container section-y-lg">
           <OfferCarouselRow
-            tag="Próximos passos"
+            tag="Recomendados para você"
             title="Pílulas do próximo curso — Pesquisa Avançada em UX"
             subtitle="Arraste para ver todos os módulos · cada pílula é uma aula completa gratuita"
             items={[
